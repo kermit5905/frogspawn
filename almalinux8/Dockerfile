@@ -36,12 +36,12 @@ RUN python3 -m pip install pysimplegui
 # Install TSC
 COPY TSC-1.0.31324-x86_64-Linux.rpm /tmp/
 RUN rpm -i /tmp/TSC-1.0.31324-x86_64-Linux.rpm
+RUN dnf install -y gedit
 
 ENV USER_ID=${USER_ID:-1000}
 ENV GROUP_ID=${GROUP_ID:-1000}
-ENV USER=${USER:-kevin}
+ENV USER=${USER:-tscrun}
 ENV HOME=/home/${USER}
-
 RUN groupadd ${USER} 
 RUN useradd ${USER} -m -d ${HOME} -s /bin/bash -g ${USER}
 RUN usermod -aG wheel ${USER}
